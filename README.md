@@ -1,2 +1,7 @@
 # iframe-navigation
-Library to open links as iframes to be able to press Back button to go to page without reload
+Library to open links as iframes to be able to press Back button to go to page without reload.
+
+Usage:
+```js
+document.addEventListener('click', useIframeNavigation);
+```
