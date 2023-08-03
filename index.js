@@ -42,30 +42,28 @@ function useIframeNavigation(e) {
         return;
     };
 
-    if(window.top._realPath === '/' || window.top._realPath === '/home') {
-        e.preventDefault();
-        e.stopImmediatePropagation();
+    e.preventDefault();
+    e.stopImmediatePropagation();
 
-        window.previousOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
+    window.previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
 
-        window.top.history.pushState(null, null, a.href);
+    window.top.history.pushState(null, null, a.href);
 
-        let iframe = document.createElement('iframe');
-        iframe.classList.add('iframe-navigation');
-        iframe.src = a.href;
-        iframe.style = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            border: none;
-            z-index: 99999;
-        `;
-        document.body.appendChild(iframe);
-        iframe.focus();
-    }
+    let iframe = document.createElement('iframe');
+    iframe.classList.add('iframe-navigation');
+    iframe.src = a.href;
+    iframe.style = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        z-index: 99999;
+    `;
+    document.body.appendChild(iframe);
+    iframe.focus();
 
     window.addEventListener('popstate', () => {
         let windowExists = window.top.windows.findIndex(w => w._realPath === location.pathname);
