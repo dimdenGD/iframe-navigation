@@ -21,7 +21,7 @@ function useIframeNavigation(e) {
     if(e.defaultPrevented) return;
 
     let a = e.target.closest('a');
-    if(!a || !a.href || a.href.startsWith('#') || a.href.startsWith('javascript:')) return;
+    if(!a || !a.href || a.href.startsWith('#') || a.href.startsWith('javascript:') || a.href.startsWith('blob:')) return;
     if(a.href.startsWith('http') && !a.href.startsWith(location.origin)) return;
 
     let depth = getFrameDepth(window);
